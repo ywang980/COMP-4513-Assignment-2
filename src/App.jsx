@@ -51,7 +51,7 @@ const App = () => {
   */
  return(
  <div>
- <ForgotPasswordForm />
+<LoginForm />
  </div>
  )
 };

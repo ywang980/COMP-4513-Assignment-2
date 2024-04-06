@@ -2,12 +2,21 @@ import React from 'react';
 import "./LoginForm.css";
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
+// the background image used for LoginForm, RegisterForm, and ForgotPasswordForm is from
+// https://www.pexels.com/photo/a-formula-1-car-on-a-race-track-10807493/
+// referenced this youtube video to make this login page
+//https://www.youtube.com/watch?v=kghwFYOJiNg
+//used this to get icons
+//https://react-icons.github.io/react-icons/search/#q=email
+
+
+
 const LoginForm = () =>
 {
     return(
         <div className='mainDiv'>
         <div className='wrapper'>
-            <form action="">
+            <form >
                 <h1>Login</h1>
                 <div className='input-box'>
                     <input type="text" placeholder='Username' required />
@@ -27,7 +36,7 @@ const LoginForm = () =>
                 </div>
             </form>
         </div>
-            
+            <p id ="credit">image from  https://www.pexels.com/photo/a-formula-1-car-on-a-race-track-10807493/ </p>
         </div>
     )
 }
