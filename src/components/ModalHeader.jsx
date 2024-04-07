@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'react-daisyui';
-import { useModal } from './ModalProvider';
+import { useModal } from './ContextProviders/ModalProvider';
 
 import ModalButton from './DaisyButton';
 

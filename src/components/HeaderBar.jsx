@@ -1,19 +1,14 @@
 import React from 'react';
 
 import DaisyButton from './DaisyButton';
-import { useModal } from './ModalProvider';
+import { useModal } from './ContextProviders/ModalProvider';
 import ModalHeader from './ModalHeader';
 
 import SubHeaderBar from './SubHeaderBar';
 import SeasonSelector from './SeasonSelector';
 
+import { useFavorites } from './ContextProviders/FavoritesProvider';
 import FavoritesContent from './FavoritesContent';
-
-const favoritesData = {
-    drivers: ["Driver 1", "Driver 2", "Driver 3"],
-    constructors: ["Constructor 1", "Constructor 2", "Constructor 3"],
-    circuits: null
-};
 
 const headerStyles = {
     border: '1px solid black',
@@ -25,20 +20,20 @@ const titleStyles = {
 }
 
 const HeaderBar = () => {
-    const { openModal, closeModal } = useModal();
+    const { openModal } = useModal();
+    const { emptyFavorites } = useFavorites();
 
     const handleFavoritesClick = () => {
         openModal(
             <ModalHeader
                 title="Favorites"
                 buttons={[
-                    <DaisyButton key="1" color="primary" onClick={() => alert("Complete this later!")}>
-                        Additional Button
+                    <DaisyButton key="1" color="primary" onClick={emptyFavorites}>
+                        Empty Favorites
                     </DaisyButton>
                 ]}
             />,
-            // <div>Favorites content</div>
-            <FavoritesContent {...favoritesData} />
+            <FavoritesContent />
         );
     };
 

@@ -1,7 +1,13 @@
-import React from 'react';
-import ListWithHeader from './ListWithHeader'; // Import ListWithHeader component
+import React, { useEffect } from 'react';
 
-const FavoritesContent = ({ drivers, constructors, circuits }) => {
+import ListWithHeader from './ListWithHeader';
+import { useFavorites } from './ContextProviders/FavoritesProvider';
+
+const FavoritesContent = () => {
+
+    const { favorites } = useFavorites();
+    const { drivers, constructors, circuits } = favorites;
+
     return (
         <div className="flex flex-col md:flex-row space-y-5 md:space-y-0 md:space-x-5">
             <div className="w-full md:w-1/3 border-b md:border-b-0">

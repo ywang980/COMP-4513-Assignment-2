@@ -5,7 +5,7 @@ const ListWithHeader = ({ header, elements }) => {
         <div className="list-container">
             <h2 className="text-center text-2xl font-bold mb-4">{header}</h2>
             <div className="list-content overflow-auto">
-                {elements ? (
+                {elements && elements.length > 0 ? (
                     elements.map((item, index) => (
                         <div key={index} className="p-4 text-center">
                             {item}
