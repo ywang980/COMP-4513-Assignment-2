@@ -3,14 +3,17 @@ import { Button } from 'react-daisyui';
 
 import { ModalProvider } from './components/ModalProvider';
 import HeaderBar from './components/HeaderBar';
+import LoginForm from './components/LoginForm/LoginForm'
 
 
 const App = () => {
   return (
-    <ModalProvider>
-      <HeaderBar />
-      {/* other components */}
-    </ModalProvider>
+   // <ModalProvider>
+     // <HeaderBar />
+    //  {/* other components */}
+   // </ModalProvider>
+   <LoginForm />
+
   );
 }
 
