@@ -1,6 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'react-daisyui';
 
+import { ModalProvider } from './components/ModalProvider';
+import HeaderBar from './components/HeaderBar';
+
+
+// const App = () => {
+//   return (
+//     <ModalProvider>
+//       <HeaderBar />
+//       {/* other components */}
+//     </ModalProvider>
+//   );
+// }
+
 const App = () => {
   const gridItems = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
 

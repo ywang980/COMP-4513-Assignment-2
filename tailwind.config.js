@@ -10,6 +10,11 @@ module.exports = {
     extend: {
     },
   },
-  plugins: [require('daisyui')],
+  plugins: [
+    require('daisyui'),
+  ],
+  daisyui: {
+    themes: ['dark'], // Set the default theme to 'dark'
+  },
   darkMode: 'media',
 };
