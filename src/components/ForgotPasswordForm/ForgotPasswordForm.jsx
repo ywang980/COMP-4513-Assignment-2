@@ -1,6 +1,7 @@
 import React from 'react';
 import './ForgotPasswordForm.css';
 import { MdOutlineMarkEmailUnread } from "react-icons/md";
+import { Link } from 'react-router-dom';
 // the background image used for LoginForm, RegisterForm, and ForgotPasswordForm is from
 // https://www.pexels.com/photo/a-formula-1-car-on-a-race-track-10807493/
 // referenced this youtube video to make this forgot password page
@@ -19,8 +20,9 @@ const ForgotPasswordForm = () =>
                     <input type="text" placeholder='Email' required />
                     <MdOutlineMarkEmailUnread className='icon' />
                 </div>
-            
+                <Link to="/">
                 <button type='submit'>Submit</button>
+                </Link>
               
             </form>
         </div>

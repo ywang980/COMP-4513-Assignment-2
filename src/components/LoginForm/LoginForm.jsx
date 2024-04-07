@@ -2,6 +2,7 @@ import React from 'react';
 import "./LoginForm.css";
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
+import {Link} from 'react-router-dom';
 // the background image used for LoginForm, RegisterForm, and ForgotPasswordForm is from
 // https://www.pexels.com/photo/a-formula-1-car-on-a-race-track-10807493/
 // referenced this youtube video to make this login page
@@ -29,11 +30,13 @@ const LoginForm = () =>
                 </div>
                 <div className="remeber-forgot">
                     <label ><input type="checkbox" />Remember me</label>
-                    <a href="#">Forgot password?</a>
+                    <Link to="/ForgotPasswordForm" >Forgot password?</Link>
                 </div>
+                <Link to = "/Home">
                 <button type='submit'>Login</button>
+                </Link>
                 <div className="register-link">
-                    <p>Don't have an account? <a href="#">Register</a></p>
+                    <p>Don't have an account? <Link  to="/RegisterForm">Register</Link></p>
                 </div>
             </form>
         </div>

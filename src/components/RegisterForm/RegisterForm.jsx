@@ -3,6 +3,7 @@ import './RegisterForm.css';
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import { MdOutlineMarkEmailUnread } from "react-icons/md";
+import { Link } from 'react-router-dom';
 // the background image used for LoginForm, RegisterForm, and ForgotPasswordForm is from
 // https://www.pexels.com/photo/a-formula-1-car-on-a-race-track-10807493/
 // referenced this youtube video to make this Register page
@@ -29,8 +30,9 @@ const RegisterForm = () =>
                     <input type="password" placeholder='Password' required />
                     <FaLock className='icon' />
                 </div>
-            
+                <Link to= "/">
                 <button type='submit'>Submit</button>
+                </Link>
               
             </form>
         </div>
