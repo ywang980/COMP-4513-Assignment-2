@@ -118,7 +118,7 @@ export const fetchConstructorStandingsByRaceID = async (raceId) => {
     return constructorStandingsDataWithNames;
 };
 
-export const fetchCircuitById = async (circuitId) => {
+export const fetchCircuitByID = async (circuitId) => {
     const params = [];
     params.push(new Param('eq', 'circuitId', circuitId));
 

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import LoginForm from './components/LoginForm/LoginForm';
-import RegisterForm from './components/RegisterForm/RegisterForm';
-import ForgotPasswordForm from './components/ForgotPasswordForm/ForgotPasswordForm';
+import LoginForm from './components/Forms/LoginForm';
+import RegisterForm from './components/Forms/RegisterForm';
+import ForgotPasswordForm from './components/Forms/ForgotPasswordForm';
 
 import Home from './components/Home';
 //IMPORTANT NEED TO USE REACT-ROUTER-DOM-VERSION-5

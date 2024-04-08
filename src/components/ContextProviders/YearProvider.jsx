@@ -5,7 +5,8 @@ export const YearContext = createContext();
 
 /**
  * YearProvider is a component that maintains the state for year data.
- * It fetches races for all years on initial load and updates current races whenever the selected year changes.
+ * It fetches races for all years on initial load and updates current races
+ * whenever the selected year changes.
  */
 export const YearProvider = ({ children }) => {
     const [selectedYear, setSelectedYear] = useState("");
@@ -39,7 +40,10 @@ export const YearProvider = ({ children }) => {
 
 
     return (
-        <YearContext.Provider value={{ selectedYear, setSelectedYear, currentYearRaces }}>
+        <YearContext.Provider value={{
+            selectedYear, setSelectedYear,
+            currentYearRaces
+        }}>
             {children}
         </YearContext.Provider>
     );
