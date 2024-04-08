@@ -8,6 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      spacing: {
+        '88': '350px', // Custom spacing for width and height
+      },
     },
   },
   plugins: [
@@ -16,5 +19,5 @@ module.exports = {
   daisyui: {
     themes: ['dark'], // Set the default theme to 'dark'
   },
-  darkMode: 'media',
+  darkMode: 'media', // Use 'media' or 'class' to enable dark mode
 };

@@ -59,7 +59,7 @@ const HeaderBar = () => {
                 </SubHeaderBar>
                 <SubHeaderBar flexClass="flex-grow">
                     <div className="flex justify-center items-center w-full" style={titleStyles}>
-                        F1 Dashboard Project
+                     RacingLineAnalytics
                     </div>
                 </SubHeaderBar>
                 <SubHeaderBar alignment="right" flexClass="flex-grow">

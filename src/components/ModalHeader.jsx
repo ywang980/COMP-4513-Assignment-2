@@ -14,21 +14,26 @@ const ModalHeader = ({ title, buttons }) => {
     const titleStyles = {
         fontWeight: 'bold',
         fontSize: '1.5rem',
+        paddingLeft: '5px',
         color: '#666',
+        width: '100%', // Make the title take the full width
+    };
+
+    const buttonStyles = {
+        paddingTop: '5px', // Add padding to the top of the buttons
+        paddingRight: '5px',
     };
 
     return (
         <div className="flex justify-between items-center w-full">
-            <div className="w-1/2">
-                <h2 style={titleStyles}>{title}</h2>
+            <div style={titleStyles}>
+                <h2>{title}</h2>
             </div>
-            <div className="w-1/2 flex justify-end space-x-4">
-                <div className="flex space-x-4">
-                    {/* Map through the buttons array and display each button */}
-                    {buttons && buttons.map((button, index) =>
-                        React.cloneElement(button, { key: index })
-                    )}
-                </div>
+            <div style={buttonStyles} className="flex justify-end space-x-4">
+                {/* Map through the buttons array and display each button */}
+                {buttons && buttons.map((button, index) =>
+                    React.cloneElement(button, { key: index })
+                )}
                 {/* Add a Close button that closes the modal when clicked */}
                 <ModalButton onClick={closeModal}>Close</ModalButton>
             </div>
@@ -36,4 +41,4 @@ const ModalHeader = ({ title, buttons }) => {
     );
 };
 
-export default ModalHeader;
+export default ModalHeader

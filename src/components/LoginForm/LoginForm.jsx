@@ -17,6 +17,7 @@ const LoginForm = () =>
 {
     return(
         <div className='mainDiv'>
+             <h1 id = "websiteTitle">RacingLineAnalytics</h1>
         <div className='wrapper'>
             <form >
                 <h1>Login</h1>
