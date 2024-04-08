@@ -10,8 +10,10 @@ import { Link } from 'react-router-dom';
 //https://www.youtube.com/watch?v=kghwFYOJiNg
 //used this to get icons
 //https://react-icons.github.io/react-icons/search/#q=email
-// Login
 
+
+//LoginForm
+// Component to provide Login form
 const LoginForm = () => {
     return (
         <div className='mainDiv'>

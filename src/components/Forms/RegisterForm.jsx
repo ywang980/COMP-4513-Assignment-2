@@ -12,6 +12,8 @@ import { Link } from 'react-router-dom';
 //used this to get icons
 //https://react-icons.github.io/react-icons/search/#q=email
 
+//RegisterForm
+// Component to register a user
 const RegisterForm = () => {
     return (
         <div className='mainDiv'>
