@@ -17,7 +17,12 @@
     padding:0;
     box-sizing: border-box;
     
-  
+  .mainDiv #websiteTitle{
+    color: #333;
+    font-size: 35px;
+    margin-bottom: 20px;
+  }
+
   }
 
   #credit{
