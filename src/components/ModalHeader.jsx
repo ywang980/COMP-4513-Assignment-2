@@ -15,7 +15,7 @@ const ModalHeader = ({ title, buttons }) => {
         fontWeight: 'bold',
         fontSize: '1.5rem',
         paddingLeft: '5px',
-        color: '#666',
+        color: 'white',
         width: '100%', // Make the title take the full width
     };
 
