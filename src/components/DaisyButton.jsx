@@ -3,7 +3,7 @@ import { Button } from 'react-daisyui';
 
 const ModalButton = ({ children, onClick }) => {
   return (
-    <Button color="primary" onClick={onClick} className="w-32 text-center flex items-center justify-center">
+    <Button  onClick={onClick} className="w-32 text-center flex items-center justify-center bg-white text-black">
       {children}
     </Button>
   );

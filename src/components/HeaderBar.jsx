@@ -64,7 +64,7 @@ const HeaderBar = () => {
                 </SubHeaderBar>
                 <SubHeaderBar alignment="right" flexClass="flex-grow">
                     <div className="flex justify-end space-x-4">
-                        <DaisyButton onClick={handleFavoritesClick}>Favorites</DaisyButton>
+                        <DaisyButton  onClick={handleFavoritesClick}>Favorites</DaisyButton>
                         <DaisyButton onClick={handleAboutClick}>About</DaisyButton>
                     </div>
                 </SubHeaderBar>
