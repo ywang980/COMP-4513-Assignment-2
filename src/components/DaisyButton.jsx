@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button } from 'react-daisyui';
-import { useModal } from './ContextProviders/ModalProvider';
 
 const ModalButton = ({ children, onClick }) => {
   return (

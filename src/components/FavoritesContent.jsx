@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import ListWithHeader from './ListWithHeader';
 import { useFavorites } from './ContextProviders/FavoritesProvider';

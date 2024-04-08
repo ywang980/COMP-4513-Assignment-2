@@ -1,8 +1,14 @@
 import React from 'react';
 import { useYear } from './ContextProviders/YearProvider';
+import { useRace } from './ContextProviders/RaceProvider';
+
+/**
+ * Component that allows users to select a season from a dropdown.
+ */
 
 const SeasonSelector = () => {
   const { selectedYear, setSelectedYear } = useYear();
+  const { setCurrentView } = useRace();
 
   const startYear = 2000;
   const endYear = 2023;
@@ -15,9 +21,14 @@ const SeasonSelector = () => {
       </option>
     );
   }
-
+  //Updates the selectedYear when a different year is selected from the dropdown.
   const handleYearChange = (event) => {
     setSelectedYear(event.target.value);
+
+    setCurrentView({
+      associatedRace: null,
+      view: null
+    });
   };
 
   return (

@@ -2,12 +2,11 @@ import React from 'react';
 
 import DaisyButton from './DaisyButton';
 import { useModal } from './ContextProviders/ModalProvider';
-import ModalHeader from './ModalHeader';
+import { useFavorites } from './ContextProviders/FavoritesProvider';
 
 import SubHeaderBar from './SubHeaderBar';
 import SeasonSelector from './SeasonSelector';
-
-import { useFavorites } from './ContextProviders/FavoritesProvider';
+import ModalHeader from './ModalHeader';
 import FavoritesContent from './FavoritesContent';
 
 const headerStyles = {
@@ -19,10 +18,16 @@ const titleStyles = {
     fontSize: '1.5rem',
 }
 
+/**
+ * HeaderBar is a component that displays a header bar with 3 sub-components
+ * containing a season selector, title, and buttons for favorites and about,
+ * respectively.
+ */
 const HeaderBar = () => {
     const { openModal } = useModal();
     const { emptyFavorites } = useFavorites();
 
+    // Handle the click event for the favorites button
     const handleFavoritesClick = () => {
         openModal(
             <ModalHeader
@@ -37,11 +42,13 @@ const HeaderBar = () => {
         );
     };
 
+    // Handle the click event for the about button
     const handleAboutClick = () => {
         openModal(
             <ModalHeader title="About" />,
             <div>About content</div>
         );
+
     };
 
     return (

@@ -1,18 +1,51 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
+import { fetchRacesSeason } from '../../supabase/dataProvider';
 
 export const YearContext = createContext();
 
+/**
+ * YearProvider is a component that maintains the state for year data.
+ * It fetches races for all years on initial load and updates current races whenever the selected year changes.
+ */
 export const YearProvider = ({ children }) => {
-    const start = 2000;
+    const [selectedYear, setSelectedYear] = useState("");
+    const [allYearsRaces, setAllYearsRaces] = useState({});
+    const [currentYearRaces, setCurrentYearRaces] = useState([]);
 
-    const [selectedYear, setSelectedYear] = useState(start);
+    // Fetch races for all years on initial load
+    useEffect(() => {
+        const fetchAllRaces = async () => {
+            const startYear = 2000;
+            const endYear = 2023;
+            const allRaces = {};
+
+            for (let year = startYear; year <= endYear; year++) {
+                const races = await fetchRacesSeason(year);
+                allRaces[year] = races;
+            }
+
+            setAllYearsRaces(allRaces);
+            setCurrentYearRaces(allRaces[selectedYear]);
+        };
+
+        fetchAllRaces();
+    }, []);
+
+    // Update current races whenever the selected year changes
+    useEffect(() => {
+        setCurrentYearRaces(allYearsRaces[selectedYear]);
+    }, [selectedYear, allYearsRaces])
+        ;
+
 
     return (
-        <YearContext.Provider value={{ selectedYear, setSelectedYear }}>
+        <YearContext.Provider value={{ selectedYear, setSelectedYear, currentYearRaces }}>
             {children}
         </YearContext.Provider>
     );
 };
 
-// Create a hook to use the year context
+/**
+ * Custom hook that provides access to the year context.
+ */
 export const useYear = () => useContext(YearContext);
