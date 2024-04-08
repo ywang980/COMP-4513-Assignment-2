@@ -3,7 +3,7 @@ import React from 'react';
 /**
  * Content to be displayed in the details pop-up of a driver.
  */
-const DriversDetailsContent = ({ driver }) => {
+const DriversDetailsContent = ({ driver, ImageLink }) => {
   const { name, dob, age, nationality, url } = driver;
 
   return (
@@ -15,7 +15,7 @@ const DriversDetailsContent = ({ driver }) => {
       <p style={{ marginLeft: '5px', color: 'white' }}><span>Website: </span><a href={url}>{url}</a></p>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '40px' }}>
         <div style={{ width: '500px', height: '500px', border: '1px solid black', padding: '10px' }}>
-
+        <img src= {ImageLink} alt="Driver Image"></img>
         </div>
       </div>
     </>

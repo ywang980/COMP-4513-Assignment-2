@@ -4,7 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 /**
  * Content to be displayed in the details pop-up of a circuit.
  */
-const CircuitDetailsContent = ({ circuit }) => {
+const CircuitDetailsContent = ({ circuit, ImageLink }) => {
   const { name, location, country, url, lat, lng } = circuit;
   const position = [lat, lng];
 
@@ -19,10 +19,10 @@ const CircuitDetailsContent = ({ circuit }) => {
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '40px' }}>
         <div style={{ width: '500px', height: '500px', border: '1px solid black', padding: '10px' }}>
           {/* Content of first div */}
-          <img src='./f1_v2.png'></img>
+          <img src= {ImageLink} alt = "Circuit Image"></img>
         </div>
         <div style={{ width: '500px', height: '500px', border: '1px solid black', padding: '10px' }}>
-
+            <p> Extra Marks: Map of Circuit </p>
         </div>
       </div>
     </>
