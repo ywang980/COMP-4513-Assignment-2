@@ -1,30 +1,32 @@
 import { useFavorites } from "../ContextProviders/FavoritesProvider";
 import ModalHeader from "../ModalHeader";
 import DaisyButton from '../DaisyButton';
-import CircuitDetailsContent from "./CircuitDetailsContent";
 import { useModal } from '../ContextProviders/ModalProvider';
+import DriversDetailsContent from "./DriversDetailsContent";
 
 
-const CircuitDetails =({ Name,Location,Country, url }) => {
+const DriverDetails =({ Name,dob,age,nationality, url }) => {
 const {addToFavorites} = useFavorites();
 const {openModal} = useModal();
 
 const handleAddToFavorites = () =>
 {
-    addToFavorites('circuits',Name);
+    addToFavorites('drivers',Name);
 }
 
 
 return(
     openModal(
-    <ModalHeader title ="Circuit Details" buttons = { [
+    <ModalHeader title ="Driver Details" buttons = { [
         <DaisyButton key="1" color="primary" onClick={handleAddToFavorites}>
             Add Favorites
         </DaisyButton>
 
     ]}
     />,   
-    <CircuitDetailsContent  circuitLocation= {Location} Name={Name} Country={Country} url={url} />
+    <DriversDetailsContent Name={Name} dob={dob} age={age} nationality={nationality} url={url} />
+
+   
 
 )
 
@@ -34,4 +36,4 @@ return(
 
 
 }
-export default CircuitDetails;
+export default DriverDetails;

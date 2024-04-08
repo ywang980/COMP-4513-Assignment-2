@@ -35,7 +35,7 @@ const ModalHeader = ({ title, buttons }) => {
                     React.cloneElement(button, { key: index })
                 )}
                 {/* Add a Close button that closes the modal when clicked */}
-                <ModalButton onClick={closeModal}>Close</ModalButton>
+                <ModalButton  onClick={closeModal}>Close</ModalButton>
             </div>
         </div>
     );
