@@ -7,7 +7,8 @@ const RaceButtons = ({ associatedRace }) => {
     const handleResultsClick = () => {
         setCurrentView({
             round: associatedRace.round,
-            circuit: associatedRace.name,
+            circuit: associatedRace.circuitName,
+            raceId: associatedRace.raceId,
             view: 'results'
         });
     };
@@ -15,7 +16,8 @@ const RaceButtons = ({ associatedRace }) => {
     const handleStandingsClick = () => {
         setCurrentView({
             round: associatedRace.round,
-            circuit: associatedRace.name,
+            circuit: associatedRace.circuitName,
+            raceId: associatedRace.raceId,
             view: 'standings'
         });
     };

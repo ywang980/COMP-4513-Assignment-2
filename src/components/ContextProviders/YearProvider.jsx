@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import { fetchRacesSeason } from '../../supabase/dataProvider';
+import { fetchRacesCircuitsBySeason } from '../../supabase/dataProvider';
 
 export const YearContext = createContext();
 
@@ -20,7 +20,7 @@ export const YearProvider = ({ children }) => {
             const allRaces = {};
 
             for (let year = startYear; year <= endYear; year++) {
-                const races = await fetchRacesSeason(year);
+                const races = await fetchRacesCircuitsBySeason(year);
                 allRaces[year] = races;
             }
 
@@ -46,6 +46,6 @@ export const YearProvider = ({ children }) => {
 };
 
 /**
- * Custom hook that provides access to the year context.
+ * Custom hook that provides access to the modal context.
  */
 export const useYear = () => useContext(YearContext);

@@ -25,18 +25,27 @@ const GeneralTable = ({ header, columns, data }) => {
           </tr>
         </thead>
         <tbody>
-          {/* Map through the data array to render each row */}
-          {data.map((row, rowIndex) => (
-            <tr key={rowIndex}>
-              {/* For each row, map through the columns array to render each cell */}
-              {columns.map((column, colIndex) => (
-                <td key={colIndex} className="p-2">
-                  {/* Use the render function provided in the column object to render the cell content */}
-                  {column.render(row)}
-                </td>
-              ))}
+          {/* Check if data is empty */}
+          {data.length === 0 ? (
+            <tr>
+              <td colSpan={columns.length} className="text-center p-2">
+                No data available
+              </td>
             </tr>
-          ))}
+          ) : (
+            /* Map through the data array to render each row */
+            data.map((row, rowIndex) => (
+              <tr key={rowIndex}>
+                {/* For each row, map through the columns array to render each cell */}
+                {columns.map((column, colIndex) => (
+                  <td key={colIndex} className="p-2">
+                    {/* Use the render function provided in the column object to render the cell content */}
+                    {column.render(row)}
+                  </td>
+                ))}
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
     </div>

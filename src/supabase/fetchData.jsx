@@ -9,8 +9,8 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey);
  * @param {string} table - The name of the table from which data is to be fetched.
  * @param {Array<string>} columns - An array of column names to be selected from the table.
  * @param {Array<Param>} params - An array of parameters defining conditions for the query.
- * @returns {Promise<Array<Object>|Object>} - A promise that resolves to an array of fetched data objects if successful, 
- * or an object containing an error message if an error occurs.
+ * @returns {Promise<Array<Object>>} - A promise that resolves to an array of fetched data objects if successful, 
+ * or an empty array if an error occurs or no matches are found.
  */
 export const fetchData = async (table, columns, params) => {
     try {
@@ -22,17 +22,20 @@ export const fetchData = async (table, columns, params) => {
         const { data, error } = await query;
 
         if (error) {
-            throw new Error(error.message);
+            console.error(error.message);
+            return [];
         }
 
         if (!data || data.length == 0) {
-            throw new Error(`No data found for the specified condition in ${table}.`);
+            console.error(`No data found for the specified condition in ${table}.`);
+            return [];
         }
 
         return data;
     }
     catch (error) {
-        return { error: error.message };
+        console.error(error.message);
+        return [];
     }
 };
 
