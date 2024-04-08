@@ -1,7 +1,6 @@
 import React from 'react';
-
-import ListWithHeader from './ListWithHeader';
 import { useFavorites } from './ContextProviders/FavoritesProvider';
+import ListWithHeader from './ListWithHeader';
 
 const FavoritesContent = () => {
 

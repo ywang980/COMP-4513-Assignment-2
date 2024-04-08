@@ -1,37 +1,49 @@
+import React, { useEffect, useState } from 'react';
 import { useFavorites } from "../ContextProviders/FavoritesProvider";
+import { useModal } from '../ContextProviders/ModalProvider';
+import { fetchCircuitById } from '../../supabase/dataProvider';
+
 import ModalHeader from "../ModalHeader";
 import DaisyButton from '../DaisyButton';
 import CircuitDetailsContent from "./CircuitDetailsContent";
-import { useModal } from '../ContextProviders/ModalProvider';
 
+const CircuitDetails = ({ circuitId }) => {
+    const { addToFavorites } = useFavorites();
+    const { openModal } = useModal();
+    const [circuit, setCircuit] = useState(null);
 
-const CircuitDetails =({ Name,Location,Country, url }) => {
-const {addToFavorites} = useFavorites();
-const {openModal} = useModal();
+    useEffect(() => {
+        const fetchData = async () => {
+            const circuitData = await fetchCircuitById(circuitId);
+            setCircuit(circuitData);
+        }
 
-const handleAddToFavorites = () =>
-{
-    addToFavorites('circuits',Name);
-}
+        fetchData();
+    }, [circuitId]);
 
+    const handleAddToFavorites = () => {
+        addToFavorites('circuits', circuit.name);
+    }
 
-return(
-    openModal(
-    <ModalHeader title ="Circuit Details" buttons = { [
-        <DaisyButton key="1" color="primary" onClick={handleAddToFavorites}>
-            Add Favorites
-        </DaisyButton>
+    useEffect(() => {
+        if (circuit) {
+            openModal(
+                <ModalHeader title="Circuit Details" buttons={[
+                    <DaisyButton key="1" color="primary" onClick={handleAddToFavorites}>
+                        Add to Favorites
+                    </DaisyButton>
+                ]}
+                />,
+                <CircuitDetailsContent circuit={circuit} />
+            );
+        }
+    }, [circuit, openModal, handleAddToFavorites]);
 
-    ]}
-    />,   
-    <CircuitDetailsContent  circuitLocation= {Location} Name={Name} Country={Country} url={url} />
+    if (!circuit) {
+        return <div>Error: Circuit with circuitId: {circuitId} not found</div>;
+    }
 
-)
+    return null;
+};
 
-)
-
-
-
-
-}
 export default CircuitDetails;

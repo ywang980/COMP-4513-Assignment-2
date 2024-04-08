@@ -1,12 +1,11 @@
 import React from 'react';
+import { usePopupHandlers } from './PopupHandlers';
 
 const PodiumPositions = ({ results }) => {
+    const { handleDriverNameClick } = usePopupHandlers();
+
     // Filter out the top 3 positions
     const topResults = results.slice(0, 3);
-
-    const handleDriverNameClick = (name) => {
-        alert(`Driver: ${name}`);
-    };
 
     const positionColors = ['gold', 'silver', '#cd7f32']; // Gold, Silver, Bronze
     const positionTexts = ['1st', '2nd', '3rd']; // Texts for positions
@@ -20,7 +19,7 @@ const PodiumPositions = ({ results }) => {
                     style={{ border: positionBorders[index] }}>
                     <h2
                         className="underline cursor-pointer"
-                        onClick={() => handleDriverNameClick(result.driverName)}
+                        onClick={() => handleDriverNameClick(result.driverId)}
                     >
                         {result.driverName}
                     </h2>

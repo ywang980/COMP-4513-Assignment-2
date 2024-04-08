@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useRace } from './ContextProviders/RaceProvider';
 import { fetchResultsByRaceID } from '../supabase/dataProvider';
-import PodiumPositions from './PodiumPositions';
+import { usePopupHandlers } from './PopupHandlers';
+
 import GeneralTable from './GeneralTable';
+import PodiumPositions from './PodiumPositions';
 
 const ResultsContent = () => {
     const { currentView } = useRace();
+    const { handleDriverNameClick, handleConstructorNameClick } = usePopupHandlers();
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -17,14 +20,6 @@ const ResultsContent = () => {
         fetchData();
     }, [currentView.raceId]);
 
-    const handleDriverNameClick = (name) => {
-        alert(`Driver: ${name}`);
-    };
-
-    const handleConstructorNameClick = (name) => {
-        alert(`Constructor: ${name}`);
-    };
-
     // Define the columns
     const columns = [
         { header: 'Position', width: 'w-2/10', render: (row) => row.position },
@@ -34,7 +29,7 @@ const ResultsContent = () => {
             render: (row) => (
                 <span
                     className="underline cursor-pointer"
-                    onClick={() => handleDriverNameClick(row.driverName)}
+                    onClick={() => handleDriverNameClick(row.driverId)}
                 >
                     {row.driverName}
                 </span>
@@ -46,7 +41,7 @@ const ResultsContent = () => {
             render: (row) => (
                 <span
                     className="underline cursor-pointer"
-                    onClick={() => handleConstructorNameClick(row.constructorName)}
+                    onClick={() => handleConstructorNameClick(row.constructorId)}
                 >
                     {row.constructorName}
                 </span>
@@ -60,7 +55,7 @@ const ResultsContent = () => {
         <div className="h-full flex flex-col">
             <h1 className="h-1/10 text-center text-2xl mb-4">Results</h1>
             <div className="h-2/10">
-                <PodiumPositions results={data}/>
+                <PodiumPositions results={data} />
             </div>
             <div className="h-7/10 overflow-auto">
                 <GeneralTable

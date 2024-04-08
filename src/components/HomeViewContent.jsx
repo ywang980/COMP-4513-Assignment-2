@@ -1,5 +1,4 @@
 import React from 'react';
-
 import RacesAsideBar from './RacesAsideBar';
 import StandingsResultsContainer from './StandingsResultsContainer';
 

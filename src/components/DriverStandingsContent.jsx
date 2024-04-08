@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useRace } from './ContextProviders/RaceProvider';
 import { fetchDriverStandingsByRaceID } from '../supabase/dataProvider';
+import { usePopupHandlers } from './PopupHandlers';
 import GeneralTable from './GeneralTable';
 
 const DriverStandingsContent = () => {
     const { currentView } = useRace();
+    const { handleDriverNameClick } = usePopupHandlers();
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -25,7 +27,7 @@ const DriverStandingsContent = () => {
             render: (row) => (
                 <span
                     className="underline cursor-pointer"
-                    onClick={() => alert(`Driver: ${row.driverName}`)}
+                    onClick={() => handleDriverNameClick(row.driverId)}
                 >
                     {row.driverName}
                 </span>

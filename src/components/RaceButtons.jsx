@@ -9,6 +9,7 @@ const RaceButtons = ({ associatedRace }) => {
             round: associatedRace.round,
             circuit: associatedRace.circuitName,
             raceId: associatedRace.raceId,
+            circuitId: associatedRace.circuitId,
             view: 'results'
         });
     };

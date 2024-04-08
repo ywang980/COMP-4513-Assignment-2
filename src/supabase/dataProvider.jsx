@@ -23,8 +23,8 @@ export const fetchRacesCircuitsBySeason = async (year) => {
 export const fetchRaceByID = async (raceId) => {
     const params = [];
     params.push(new Param('eq', 'raceId', raceId));
-    const racesData = await fetchData('races', [], params);
 
+    const racesData = await fetchData('races', [], params);
     return racesData.length > 0 ? racesData[0] : null;
 }
 
@@ -98,7 +98,7 @@ export const fetchDriverStandingsByRaceID = async (raceId) => {
 };
 
 export const fetchConstructorStandingsByRaceID = async (raceId) => {
-    const params = []
+    const params = [];
     params.push(new Param('eq', 'raceId', raceId));
     params.push(new Param('order', 'position', { ascending: true }));
 
@@ -117,3 +117,48 @@ export const fetchConstructorStandingsByRaceID = async (raceId) => {
 
     return constructorStandingsDataWithNames;
 };
+
+export const fetchCircuitById = async (circuitId) => {
+    const params = [];
+    params.push(new Param('eq', 'circuitId', circuitId));
+
+    const circuitsData = await fetchData('circuits', [], params);
+    if (circuitsData.length == 0)
+        return null;
+
+    return circuitsData[0];
+}
+
+export const fetchDriverByID = async (driverId) => {
+    const params = [];
+    params.push(new Param('eq', 'driverId', driverId));
+
+    const driversData = await fetchData('drivers', [], params);
+    if (driversData.length == 0)
+        return null;
+
+    const driver = driversData[0];
+
+    const dob = new Date(driver.dob);
+    const today = new Date();
+    let age = today.getFullYear() - dob.getFullYear();
+    const m = today.getMonth() - dob.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+        age--;
+    }
+
+    driver.age = age;
+    driver.name = driver.forename + ' ' + driver.surname;
+    return driver;
+}
+
+export const fetchConstructorByID = async (constructorId) => {
+    const params = [];
+    params.push(new Param('eq', 'constructorId', constructorId));
+
+    const constructorsData = await fetchData('constructors', [], params);
+    if (constructorsData.length == 0)
+        return null;
+
+    return constructorsData[0];
+}

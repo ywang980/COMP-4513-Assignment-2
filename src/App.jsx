@@ -9,7 +9,7 @@ import Home from './components/Home';
 import CircuitDetails from './components/CircuitDetailsPopup/CircuitDetails';
 import { FavoritesProvider } from './components/ContextProviders/FavoritesProvider';
 import ContextProviderWrapper from './components/ContextProviders/ContextProviderWrapper'
-import DriverDetails from './components/DriversDetailsPopup/DriverDetails';
+import DriverDetails from './components/DriverDetailsPopup/DriverDetails';
 import ConstructorDetails from './components/ConstructorDetailsPopup/ConstructorDetails';
 //IMPORTANT NEED TO USE REACT-ROUTER-DOM-VERSION-5
 

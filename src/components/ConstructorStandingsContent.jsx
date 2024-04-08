@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useRace } from './ContextProviders/RaceProvider';
 import { fetchConstructorStandingsByRaceID } from '../supabase/dataProvider';
+import { usePopupHandlers } from './PopupHandlers';
 import GeneralTable from './GeneralTable';
 
 const ConstructorStandingsContent = () => {
     const { currentView } = useRace();
+    const { handleConstructorNameClick } = usePopupHandlers();
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -25,7 +27,7 @@ const ConstructorStandingsContent = () => {
             render: (row) => (
                 <span
                     className="underline cursor-pointer"
-                    onClick={() => alert(`Constructor: ${row.constructorName}`)}
+                    onClick={() => handleConstructorNameClick(row.constructorId)}
                 >
                     {row.constructorName}
                 </span>

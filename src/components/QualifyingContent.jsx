@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useRace } from './ContextProviders/RaceProvider';
 import { fetchQualifyingByRaceID } from '../supabase/dataProvider';
+import { usePopupHandlers } from './PopupHandlers';
 import GeneralTable from './GeneralTable';
 
 const QualifyingContent = () => {
     const { currentView } = useRace();
+    const { handleDriverNameClick, handleConstructorNameClick } = usePopupHandlers();
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -16,14 +18,6 @@ const QualifyingContent = () => {
         fetchData();
     }, [currentView.raceId]);
 
-    const handleDriverNameClick = (name) => {
-        alert(`Driver: ${name}`);
-    };
-
-    const handleConstructorNameClick = (name) => {
-        alert(`Constructor: ${name}`);
-    };
-
     // Define the columns
     const columns = [
         { header: 'Position', width: 'w-2/10', render: (row) => row.position },
@@ -33,7 +27,7 @@ const QualifyingContent = () => {
             render: (row) => (
                 <span
                     className="underline cursor-pointer"
-                    onClick={() => handleDriverNameClick(row.driverName)}
+                    onClick={() => handleDriverNameClick(row.driverId)}
                 >
                     {row.driverName}
                 </span>
@@ -45,7 +39,7 @@ const QualifyingContent = () => {
             render: (row) => (
                 <span
                     className="underline cursor-pointer"
-                    onClick={() => handleConstructorNameClick(row.constructorName)}
+                    onClick={() => handleConstructorNameClick(row.constructorId)}
                 >
                     {row.constructorName}
                 </span>

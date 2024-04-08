@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-
 import { useRace } from './ContextProviders/RaceProvider';
 import { fetchRaceByID } from '../supabase/dataProvider';
+
+import { usePopupHandlers } from './PopupHandlers';
 
 const ResultsSubHeader = () => {
     const { currentView } = useRace();
     const raceId = currentView.raceId;
+    const { handleCircuitNameClick } = usePopupHandlers();
 
     const [raceData, setRaceData] = useState(null);
 
@@ -22,9 +24,9 @@ const ResultsSubHeader = () => {
         return null;
     }
 
-    const handleCircuitNameClick = () => {
-        alert(`Circuit Name: ${currentView.circuit}`);
-    };
+    // const handleCircuitNameClick = () => {
+    //     alert(`Circuit Name: ${currentView.circuit}`);
+    // };
 
     return (
         <div className="text-left">
@@ -32,7 +34,10 @@ const ResultsSubHeader = () => {
             <div className="flex justify-between"><p>Round #:</p> <p>{raceData.round}</p></div>
             <div className="flex justify-between" >
                 <p>Circuit Name:</p>
-                <p className="underline cursor-pointer" onClick={handleCircuitNameClick}>{currentView.circuit}</p>
+                <p className="underline cursor-pointer"
+                    onClick={() => handleCircuitNameClick(currentView.circuitId)}>
+                    {currentView.circuit}
+                </p>
             </div>
             <div className="flex justify-between"><p>Year:</p> <p>{raceData.year}</p></div>
             <div className="flex justify-between"><p>Date:</p> <p>{raceData.date}</p></div>

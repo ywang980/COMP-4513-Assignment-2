@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useYear } from './ContextProviders/YearProvider';
-import RaceButtons from './RaceButtons';
+import { usePopupHandlers } from './PopupHandlers';
+
 import GeneralTable from './GeneralTable';
 import LoadingWheel from './LoadingWheel';
+import RaceButtons from './RaceButtons';
 
 /**
  * RacesAsideBar Component
@@ -26,6 +28,7 @@ import LoadingWheel from './LoadingWheel';
  */
 const RacesAsideBar = () => {
     const { selectedYear, currentYearRaces } = useYear();
+    const {handleCircuitNameClick} = usePopupHandlers();
     const [tableData, setTableData] = useState([]);
 
     useEffect(() => {
@@ -37,11 +40,20 @@ const RacesAsideBar = () => {
             header: 'Round', width: 'w-1/4', render: (race) => race.round
         },
         {
-            header: 'Circuit', width: 'w-1 /2', render: (race) => race.circuitName
+            header: 'Circuit',
+            width: 'w-1 /2',
+            render: (race) => (
+                <span
+                    className="underline cursor-pointer"
+                    onClick={() => handleCircuitNameClick(race.circuitId)}
+                >
+                    {race.circuitName}
+                </span>
+            )
         },
         {
             width: 'w-1/4',
-            render: (race) => <RaceButtons associatedRace={race}/>
+            render: (race) => <RaceButtons associatedRace={race} />
         }
     ];
 

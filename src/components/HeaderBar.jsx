@@ -1,13 +1,12 @@
 import React from 'react';
-
-import DaisyButton from './DaisyButton';
 import { useModal } from './ContextProviders/ModalProvider';
 import { useFavorites } from './ContextProviders/FavoritesProvider';
 
+import DaisyButton from './DaisyButton';
+import FavoritesContent from './FavoritesContent';
+import ModalHeader from './ModalHeader';
 import SubHeaderBar from './SubHeaderBar';
 import SeasonSelector from './SeasonSelector';
-import ModalHeader from './ModalHeader';
-import FavoritesContent from './FavoritesContent';
 
 const headerStyles = {
     border: '1px solid black',

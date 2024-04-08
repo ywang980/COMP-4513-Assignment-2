@@ -8,9 +8,9 @@ export const FavoritesContext = createContext();
  */
 export const FavoritesProvider = ({ children }) => {
     const [favorites, setFavorites] = useState({
-        drivers: ["Driver 1", "Driver 2", "Driver 3"],
-        constructors: ["Constructor 1", "Constructor 2", "Constructor 3"],
-        circuits: null
+        drivers: [],
+        constructors: [],
+        circuits: []
     });
 
     const addToFavorites = (category, item) => {
