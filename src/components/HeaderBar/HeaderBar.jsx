@@ -6,6 +6,7 @@ import SubHeaderBar from './SubHeaderBar';
 import SeasonSelector from './SeasonSelector';
 import DaisyButton from '../General/DaisyButton';
 import FavoritesContent from '../Popups/Content/FavoritesContent';
+import AboutCard from '../Popups/Content/AboutCard';
 import ModalHeader from '../Popups/ModalHeader';
 
 const headerStyles = {
@@ -29,7 +30,7 @@ const HeaderBar = () => {
     // Handle the click event for the favorites button
     const handleFavoritesClick = () => {
         isFavoritesEmpty()
-            ? alert('No favorites found')
+            ? null
             : openModal(
                 <ModalHeader
                     title="Favorites"
@@ -47,7 +48,7 @@ const HeaderBar = () => {
     const handleAboutClick = () => {
         openModal(
             <ModalHeader title="About" />,
-            <div>About content</div>
+            <AboutCard/>
         );
 
     };
